@@ -59,18 +59,27 @@ else
   command echo "no GO installation found."
 fi
 }
-
-
-source src.sh
-intro
-
+function basics_loop() {
+  for check in ${reqApp[*]}
+  do
+    status1 $check
+  done
+}
+echo "##############################################################"
+echo "                 Welcome to vChihuahuad                      #"
+echo "##############################################################"
+read -p "Press any key to continue or CTRL-C to abort"
 update
-
-source src.sh
-sysupdate
-
-
-
+echo "##########################################################"
+echo "                SYSTEM UPDATED & UPGRADED                 "
+echo "##########################################################"
+sleep 2
+echo "##########################################################"
+echo "                      INSTALLING GO                       "
+echo "##########################################################"
+echo ""
+echo "looking for old GO installation in $FLD & $FLD1"
+sleep 2
 echo "Downloading and installing GO."
 echo "sleeping 2 seconds"
 # sleep 2
@@ -97,7 +106,7 @@ echo "# INSTALLING WGET, MAKE, GCC, JQ and GIT #"
 echo "#####################@############################################"
 read -p "Press Enter to continue or CTRL-C to cancel"
 
-reqApp=(wget git make gcc jq)
+reqApp=(wget git make gcc jq net-tools)
 
 basics_loop
 sleep 2
