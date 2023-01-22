@@ -63,7 +63,7 @@ function basics_loop() {
   reqApp=(wget git make gcc jq net-tools)
   for check in ${reqApp[*]}
   do
-    status1 $check
+    command sudo apt install $check -y
   done
 }
 echo "##############################################################"
@@ -134,6 +134,7 @@ if gitclone; then
   command echo "Can't clone $GIT. Stopping."
 fi
 sleep 2
+
 echo "##########################################################"
 echo "                    Backing Up CHIHUAHUAd                 "
 echo "##########################################################"
