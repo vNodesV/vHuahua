@@ -140,7 +140,7 @@ echo "                    Backing Up CHIHUAHUAd                 "
 echo "##########################################################"
 
 CP1=command mkdir $HOME/backup_$DAE_NODE
-CP2=command cp $HOME/go/bin/$DAE_NODE $HOME/backup_daemon
+CP2=command cp $HOME/go/bin/$DAE_NODE $HOME/backup_$DAE_NODE
 
 function cmd1() {
   command $1
