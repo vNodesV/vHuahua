@@ -15,8 +15,6 @@ DAE_NODE=chihuahuad ## Daemon name, without the "." infont."
 function update(){
   command sudo apt update && sudo apt upgrade -y
 }
-
-### GIT & INSTALL ####
 function gitclone(){
   command git clone $GIT
 }
@@ -33,14 +31,12 @@ function gitrun() {
     command git checkout v4.1.0 &&
     command make install
 }
-
 function dlinstall() {
   wget https://go.dev/dl/$GOV
 }
 function tarf() {
   tar xf $1
 }
-
 function pathlock() {
   if go version 2>/dev/null; then
     echo " All is well for GO. Moving on"
@@ -50,19 +46,20 @@ function pathlock() {
     gopath
   fi
 }
-
 function gopath() {
   echo $PATH
   export PATH=$PATH:$HOME/go/bin
-  sudo ln -s $HOME/go/bin/go /usr/local/bin/go
+  # sudo ln -s $HOME/go/bin/go /usr/local/bin/go
 }
 function goclean() {
 if [[ -f "$GOV" ]]; then
   command sudo rm -r $GOV
+  command echo "$GOV Removed."
 else
-  command echo "can't find or delete $GOV"
+  command echo "no GO installation found."
 fi
 }
+
 
 source src.sh
 intro
@@ -73,11 +70,7 @@ source src.sh
 sysupdate
 
 
-    if goclen; then
-        echo "all clear"
-      else
-        echo "no GO installation found.'"
-    fi
+
 echo "Downloading and installing GO."
 echo "sleeping 2 seconds"
 # sleep 2
@@ -88,46 +81,23 @@ if dlinstall; then
 else
   echo "error decompressing"
 fi
-
 if pathlock; then
   echo "setting up GO path"
   goclean
   echo "$GOV remove. Squeeky Clean!"
 fi
 command cd
-echo $pwd
 sleep 2
 
 echo "  ###############################################################"
 echo "  #                           GO INSTALLED                      #"
 echo "  ###############################################################"
 echo "##################################################################"
-echo "# INSTALLING WGET CHRONY, BUILD-ESSENTIAL, MAKE, GCC, JQ and GIT #"
+echo "# INSTALLING WGET, MAKE, GCC, JQ and GIT #"
 echo "#####################@############################################"
 read -p "Press Enter to continue or CTRL-C to cancel"
 
-reqApp=(wget git make gcc jq chrony build-essential)
-
-function install_apps_basics() {
-  sudo apt install $@ -y
-}
-function status1() {
-  ins=$1
-  st1=$(dpkg -s $ins | grep "Status: install ok installed")
-  st2=$(echo $st1 2>/dev/null)
-
-  if [[ $st2 = "Status: install ok installed" ]]; then
-    echo "$ins installed"
-  else
-    sudo apt install $ins -y
-  fi
-}
-function basics_loop() {
-  for check in ${reqApp[*]}
-  do
-    status1 $check
-  done
-}
+reqApp=(wget git make gcc jq)
 
 basics_loop
 sleep 2
