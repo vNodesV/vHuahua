@@ -1,6 +1,7 @@
 
 # vHuahua: Disaster Recovery Script.
 ## Purpose is to take a fresh Ubuntu installation and deploy everything necessary to have chihuahuad 4.1.0 deployed and ready for configuration..
+### Twitter: @vNodesV - Email: dsebster@vnodes.cloud - www: https://vnodes.cloud
 
 
 
@@ -33,7 +34,7 @@
 ### At this point, everything is in place and Chihuahuad is ready for setup. 
  
 
-Note: Self-thought. This is my first full script and I welcome any constructive feedback. @dSebster or dsebster@vnodes.cloud
+Note: Self-thought. This is my first full script and I welcome any constructive feedback. @vNodesV or dsebster@vnodes.cloud
 
 
 
