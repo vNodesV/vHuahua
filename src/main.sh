@@ -60,6 +60,7 @@ else
 fi
 }
 function basics_loop() {
+  reqApp=(wget git make gcc jq net-tools)
   for check in ${reqApp[*]}
   do
     status1 $check
@@ -106,7 +107,7 @@ echo "# INSTALLING WGET, MAKE, GCC, JQ and GIT #"
 echo "#####################@############################################"
 read -p "Press Enter to continue or CTRL-C to cancel"
 
-reqApp=(wget git make gcc jq net-tools)
+
 
 basics_loop
 sleep 2
